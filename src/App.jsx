@@ -104,7 +104,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white p-6 font-sans flex flex-col items-center bg-cover bg-center bg-no-repeat bg-fixed" 
-         style={{ backgroundImage: "url('./public/img/fondoLandingPage.png')" }}>
+         style={{ backgroundImage: "url('./img/fondoLandingPage.png')" }}>
       
       {isAdmin ? (
         !session ? (
