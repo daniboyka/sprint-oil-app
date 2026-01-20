@@ -24,6 +24,30 @@ export default function App() {
     nombre: "", phone: "", auto: "", servicio: "Service Completo", patent: "", date: "", mensaje: "",
   });
 
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [showInstallBtn, setShowInstallBtn] = useState(false);
+
+  useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShowInstallBtn(true);
+    };
+    window.addEventListener('beforeinstallprompt', handler);
+    return () => window.removeEventListener('beforeinstallprompt', handler);
+  }, []);
+
+  // Función para manejar la instalación
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      setShowInstallBtn(false);
+    }
+    setDeferredPrompt(null);
+  };
+
   // 1. Manejo de URL (#admin)
   useEffect(() => {
     const checkHash = () => setIsAdmin(window.location.hash === "#admin");
@@ -103,9 +127,19 @@ export default function App() {
     .reduce((acc, el) => acc + (el.points || 0), 0);
 
   return (
+    
     <div className="min-h-screen bg-zinc-950 text-white p-6 font-sans flex flex-col items-center bg-cover bg-center bg-no-repeat bg-fixed" 
          style={{ backgroundImage: "url('/img/fondoLandingPage.png')" }}>
-      
+          {showInstallBtn && (
+      <div 
+        className="w-full bg-red-600 text-white p-3 text-center cursor-pointer animate-pulse sticky top-0 z-50 shadow-lg" 
+        onClick={handleInstallClick}
+      >
+        <p className="font-bold text-sm tracking-widest uppercase italic">
+          🏁 ¡Instalá la App de Sprint Oil aquí! 🏁
+        </p>
+      </div>
+      )}
       {isAdmin ? (
         !session ? (
           /* LOGIN - ESTÉTICA ORIGINAL */
