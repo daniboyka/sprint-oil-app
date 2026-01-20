@@ -218,7 +218,7 @@ export default function App() {
         <div className="w-full max-w-md animate-in slide-in-from-bottom-8 duration-700">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-black italic text-red-600 uppercase tracking-tighter">Sprint Oil</h1>
-            <p className="text-zinc-500 text-xs font-bold uppercase tracking-[0.3em]">Centro de Estética & Service</p>
+            <p className="text-zinc-500 text-xs font-bold uppercase tracking-[0.3em]">Calidad que se siente al acelerar</p>
           </div>
           <div className="bg-white text-black p-8 rounded-[2.5rem] shadow-2xl">
             <h2 className="text-2xl font-black uppercase italic mb-6">Sacar Turno</h2>
