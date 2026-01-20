@@ -1,0 +1,16 @@
+{
+  "short_name": "Sprint Oil",
+  "name": "Sprint Oil Garage - Turnos",
+  "icons": [
+    {
+      "src": "/img/iconoLogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#000000"
+}
