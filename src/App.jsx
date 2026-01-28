@@ -170,19 +170,22 @@ export default function App() {
     .filter((a) => a.status === "confirmado")
     .reduce((acc, el) => acc + (el.points || 0), 0);
 
-    // --- NUEVA FUNCIÓN PARA ENVIAR INFORME POR WA ---
-const enviarInformeWA = async (app) => {
-  try {
-    const urlPdf = await generarInformePDF(app);
-    const mensaje = `¡Hola ${app.customer}! 🏁\nTu informe de Sprint Oil ya está listo. Podés verlo acá: ${urlPdf}`;
-    window.open(`https://wa.me/${app.phone}?text=${encodeURIComponent(mensaje)}`, '_blank');
-  } catch (error) {
-    alert("Error al subir el informe, revisá la consola.");
-  }
-};
+  // --- NUEVA FUNCIÓN PARA ENVIAR INFORME POR WA ---
+  const enviarInformeWA = async (app) => {
+    try {
+      const urlPdf = await generarInformePDF(app);
+      const mensaje = `¡Hola ${app.customer}! 🏁\nTu informe de Sprint Oil ya está listo. Podés verlo acá: ${urlPdf}`;
+      window.open(
+        `https://wa.me/${app.phone}?text=${encodeURIComponent(mensaje)}`,
+        "_blank",
+      );
+    } catch (error) {
+      alert("Error al subir el informe, revisá la consola.");
+    }
+  };
 
-// Y en tu botón:
-<button onClick={() => enviarInformeWA(app)}> Enviar por WhatsApp </button>
+  // Y en tu botón:
+  <button onClick={() => enviarInformeWA(app)}> Enviar por WhatsApp </button>;
 
   return (
     <div
@@ -371,12 +374,12 @@ const enviarInformeWA = async (app) => {
 
                   {tab === "historial" && (
                     <div className="pt-4 border-t border-zinc-800 flex flex-col gap-2">
-                  <button 
-      onClick={() => enviarInformeWA(app)}
-      className="w-full bg-emerald-600 text-white text-[10px] font-black py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-emerald-500 transition-all uppercase italic shadow-lg"
-    >
-      <Send size={14} /> Notificar y Enviar Informe (Link)
-    </button>
+                      <button
+                        onClick={() => enviarInformeWA(app)}
+                        className="w-full bg-emerald-600 text-white text-[10px] font-black py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-emerald-500 transition-all uppercase italic shadow-lg"
+                      >
+                        <Send size={14} /> Notificar y Enviar Informe (Link)
+                      </button>
                       {app.observations && (
                         <>
                           <button
@@ -476,7 +479,7 @@ const enviarInformeWA = async (app) => {
             <form onSubmit={enviarSolicitudCliente} className="space-y-4">
               <input
                 required
-                placeholder="Tu nombre"               
+                placeholder="Tu nombre"
                 className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black bg-white font-medium"
                 value={clienteData.nombre}
                 onChange={(e) =>
@@ -487,7 +490,7 @@ const enviarInformeWA = async (app) => {
                 required
                 type="tel"
                 placeholder="WhatsApp"
-                  className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black bg-white font-medium"
+                className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black bg-white font-medium"
                 value={clienteData.phone}
                 onChange={(e) =>
                   setClienteData({ ...clienteData, phone: e.target.value })
@@ -497,7 +500,7 @@ const enviarInformeWA = async (app) => {
                 <input
                   required
                   placeholder="Auto"
-                    className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black bg-white font-medium"
+                  className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black bg-white font-medium"
                   value={clienteData.auto}
                   onChange={(e) =>
                     setClienteData({ ...clienteData, auto: e.target.value })
@@ -506,25 +509,28 @@ const enviarInformeWA = async (app) => {
                 <input
                   required
                   placeholder="Patente"
-                    className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black bg-white font-medium"
+                  className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black bg-white font-medium"
                   value={clienteData.patent}
                   onChange={(e) =>
                     setClienteData({ ...clienteData, patent: e.target.value })
                   }
                 />
               </div>
-              <input
-                required
-                type="date"
-                className="w-full border-2 border-zinc-200 p-3 rounded-xl text-black bg-white font-medium appearance-none"
-    style={{ colorScheme: "light" }}
-                value={clienteData.date}
-                onChange={(e) =>
-                  setClienteData({ ...clienteData, date: e.target.value })
-                }
-              />
+          <div className="flex flex-col gap-1">
+  <label className="text-[10px] font-bold uppercase text-zinc-400 ml-1">
+    ¿Cuándo querés venir?
+  </label>
+  <input
+    required
+    type="date"
+    className="w-full border-2 border-zinc-200 p-3 rounded-xl text-black bg-white font-medium appearance-none"
+    style={{ colorScheme: "light" }} 
+    value={clienteData.date}
+    onChange={(e) => setClienteData({ ...clienteData, date: e.target.value })}
+  />
+</div>
               <select
-                className="w-full border-2 border-zinc-100 p-3 rounded-xl outline-none bg-white font-bold text-black"                
+                className="w-full border-2 border-zinc-100 p-3 rounded-xl outline-none bg-white font-bold text-black"
                 value={clienteData.servicio}
                 onChange={(e) =>
                   setClienteData({ ...clienteData, servicio: e.target.value })
@@ -536,7 +542,7 @@ const enviarInformeWA = async (app) => {
               </select>
               <textarea
                 required
-                placeholder="¿Qué le pasa al auto?"                
+                placeholder="¿Qué le pasa al auto?"
                 className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all h-24 resize-none text-black bg-white font-medium"
                 value={clienteData.mensaje}
                 onChange={(e) =>
