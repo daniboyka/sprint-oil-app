@@ -476,8 +476,8 @@ const enviarInformeWA = async (app) => {
             <form onSubmit={enviarSolicitudCliente} className="space-y-4">
               <input
                 required
-                placeholder="Tu nombre"
-                className="w-full border-2 border-zinc-100 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black font-medium"
+                placeholder="Tu nombre"               
+                className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black bg-white font-medium"
                 value={clienteData.nombre}
                 onChange={(e) =>
                   setClienteData({ ...clienteData, nombre: e.target.value })
@@ -487,7 +487,7 @@ const enviarInformeWA = async (app) => {
                 required
                 type="tel"
                 placeholder="WhatsApp"
-                className="w-full border-2 border-zinc-100 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black font-medium"
+                  className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black bg-white font-medium"
                 value={clienteData.phone}
                 onChange={(e) =>
                   setClienteData({ ...clienteData, phone: e.target.value })
@@ -497,7 +497,7 @@ const enviarInformeWA = async (app) => {
                 <input
                   required
                   placeholder="Auto"
-                  className="border-2 border-zinc-100 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black font-medium"
+                    className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black bg-white font-medium"
                   value={clienteData.auto}
                   onChange={(e) =>
                     setClienteData({ ...clienteData, auto: e.target.value })
@@ -506,7 +506,7 @@ const enviarInformeWA = async (app) => {
                 <input
                   required
                   placeholder="Patente"
-                  className="border-2 border-zinc-100 p-3 rounded-xl outline-none focus:border-red-600 transition-all uppercase text-black font-medium"
+                    className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all text-black bg-white font-medium"
                   value={clienteData.patent}
                   onChange={(e) =>
                     setClienteData({ ...clienteData, patent: e.target.value })
@@ -516,14 +516,15 @@ const enviarInformeWA = async (app) => {
               <input
                 required
                 type="date"
-                className="w-full border-2 border-zinc-100 p-3 rounded-xl text-black font-medium"
+                className="w-full border-2 border-zinc-200 p-3 rounded-xl text-black bg-white font-medium appearance-none"
+    style={{ colorScheme: "light" }}
                 value={clienteData.date}
                 onChange={(e) =>
                   setClienteData({ ...clienteData, date: e.target.value })
                 }
               />
               <select
-                className="w-full border-2 border-zinc-100 p-3 rounded-xl outline-none bg-white font-bold text-black"
+                className="w-full border-2 border-zinc-100 p-3 rounded-xl outline-none bg-white font-bold text-black"                
                 value={clienteData.servicio}
                 onChange={(e) =>
                   setClienteData({ ...clienteData, servicio: e.target.value })
@@ -535,8 +536,8 @@ const enviarInformeWA = async (app) => {
               </select>
               <textarea
                 required
-                placeholder="¿Qué le pasa al auto?"
-                className="w-full border-2 border-zinc-100 p-3 rounded-xl outline-none focus:border-red-600 transition-all h-24 resize-none text-black font-medium"
+                placeholder="¿Qué le pasa al auto?"                
+                className="w-full border-2 border-zinc-200 p-3 rounded-xl outline-none focus:border-red-600 transition-all h-24 resize-none text-black bg-white font-medium"
                 value={clienteData.mensaje}
                 onChange={(e) =>
                   setClienteData({ ...clienteData, mensaje: e.target.value })
