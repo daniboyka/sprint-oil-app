@@ -189,7 +189,7 @@ export default function App() {
 
   return (
     <div
-      className="min-h-screen bg-zinc-950 text-white p-6 font-sans flex flex-col items-center bg-cover bg-center bg-no-repeat bg-fixed"
+     className="min-h-screen bg-zinc-950 text-white p-6 font-sans flex flex-col items-center bg-center bg-no-repeat bg-fixed"
       style={{ backgroundImage: "url('/img/fondoLandingPage.png')" }}
     >
       {/* BOTÓN INSTALACIÓN */}
@@ -516,19 +516,21 @@ export default function App() {
                   }
                 />
               </div>
-          <div className="flex flex-col gap-1">
-  <label className="text-[10px] font-bold uppercase text-zinc-400 ml-1">
-    ¿Cuándo querés venir?
-  </label>
-  <input
-    required
-    type="date"
-    className="w-full border-2 border-zinc-200 p-3 rounded-xl text-black bg-white font-medium appearance-none"
-    style={{ colorScheme: "light" }} 
-    value={clienteData.date}
-    onChange={(e) => setClienteData({ ...clienteData, date: e.target.value })}
-  />
-</div>
+              <div className="flex flex-col gap-1">
+                <label className="text-[10px] font-bold uppercase text-zinc-400 ml-1">
+                  ¿Cuándo querés venir?
+                </label>
+                <input
+                  required
+                  type="date"
+                  className="w-full border-2 border-zinc-200 p-3 rounded-xl text-black bg-white font-medium appearance-none"
+                  style={{ colorScheme: "light" }}
+                  value={clienteData.date}
+                  onChange={(e) =>
+                    setClienteData({ ...clienteData, date: e.target.value })
+                  }
+                />
+              </div>
               <select
                 className="w-full border-2 border-zinc-100 p-3 rounded-xl outline-none bg-white font-bold text-black"
                 value={clienteData.servicio}
